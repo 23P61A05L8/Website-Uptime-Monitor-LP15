@@ -12,34 +12,34 @@ driver.get("http://localhost:5000")
 
 time.sleep(2)
 
-# 1️⃣ Test Page Title
+#Test Page Title
 assert "Uptime Monitor" in driver.title
-print("✅ Title Test Passed")
+print("Title Test Passed")
 
-# 2️⃣ Test Main Heading
+#Test Main Heading
 heading = driver.find_element(By.TAG_NAME, "h1").text
 assert "Intelligent Website Uptime Monitor" in heading
-print("✅ Heading Test Passed")
+print("Heading Test Passed")
 
-# 3️⃣ Check SLA Table Exists
+#Check SLA Table Exists
 tables = driver.find_elements(By.TAG_NAME, "table")
 assert len(tables) >= 2
-print("✅ Tables Exist Test Passed")
+print("Tables Exist Test Passed")
 
-# 4️⃣ Check Status Values (UP/DOWN)
+#Check Status Values (UP/DOWN)
 statuses = driver.find_elements(By.XPATH, "//td[@class='UP' or @class='DOWN']")
 
 for status in statuses:
     text = status.text
     assert text in ["UP", "DOWN"]
 
-print("✅ Status Test Passed")
+print("Status Test Passed")
 
-# 5️⃣ Check URLs are displayed
+#Check URLs are displayed
 urls = driver.find_elements(By.XPATH, "//table[1]//tr/td[1]")
 
 assert len(urls) > 0
-print("✅ URL Display Test Passed")
+print("URL Display Test Passed")
 
 # Close browser
 driver.quit()
