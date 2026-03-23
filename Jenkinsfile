@@ -25,7 +25,7 @@ pipeline {
         stage('Run Selenium Tests') {
             steps {
                 bat 'pip install selenium webdriver-manager'
-                bat 'python test_uptime.py'
+                bat 'python test.py'
             }
         }
 
