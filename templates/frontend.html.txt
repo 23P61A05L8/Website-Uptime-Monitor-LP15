@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Uptime Monitor</title>
+    <meta http-equiv="refresh" content="60">
+    <style>
+        table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; }
+        th { background: #f4f4f4; }
+        .UP { color: green; font-weight: bold; }
+        .DOWN { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Intelligent Website Uptime Monitor</h1>
+    <p>Checks run every 60 seconds</p>
+
+    <h2>📈 Uptime Percentage (SLA)</h2>
+    <table>
+        <tr>
+            <th>URL</th>
+            <th>Uptime %</th>
+            <th>Total Checks</th>
+        </tr>
+        {% for row in uptime_stats %}
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}%</td>
+            <td>{{ row[2] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>🕒 Recent Checks</h2>
+    <table>
+        <tr>
+            <th>Time</th>
+            <th>URL</th>
+            <th>Status</th>
+            <th>Response Time (s)</th>
+            <th>Hint</th>
+        </tr>
+        {% for row in history %}
+        <tr>
+            <td>{{ row[5] }}</td>
+            <td>{{ row[0] }}</td>
+            <td class="{{ row[1] }}">{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[4] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
