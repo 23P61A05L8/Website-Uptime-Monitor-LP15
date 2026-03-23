@@ -18,7 +18,7 @@ pipeline {
 
         stage('Wait for App') {
             steps {
-                bat 'timeout /t 10'
+                sleep time: 10, unit: 'SECONDS'
             }
         }
 
